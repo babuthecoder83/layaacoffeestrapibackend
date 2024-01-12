@@ -1123,6 +1123,37 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiVideoSliderVideoSlider extends Schema.SingleType {
+  collectionName: 'video_sliders';
+  info: {
+    singularName: 'video-slider';
+    pluralName: 'video-sliders';
+    displayName: 'VideoSlider';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    video1: Attribute.Media & Attribute.Required;
+    video2: Attribute.Media & Attribute.Required;
+    video3: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video-slider.video-slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video-slider.video-slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1151,6 +1182,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::social-link.social-link': ApiSocialLinkSocialLink;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
+      'api::video-slider.video-slider': ApiVideoSliderVideoSlider;
     }
   }
 }

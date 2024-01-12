@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "video_sliders",
+  "info": {
+    "singularName": "video-slider",
+    "pluralName": "video-sliders",
+    "displayName": "VideoSlider"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video1": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "video2": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "video3": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
