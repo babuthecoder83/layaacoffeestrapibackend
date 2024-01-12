@@ -1123,6 +1123,39 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestimonialTestimonial extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'Testimonial';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    position: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Customer'>;
+    description: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVideoSliderVideoSlider extends Schema.SingleType {
   collectionName: 'video_sliders';
   info: {
@@ -1182,6 +1215,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::social-link.social-link': ApiSocialLinkSocialLink;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::video-slider.video-slider': ApiVideoSliderVideoSlider;
     }
   }
