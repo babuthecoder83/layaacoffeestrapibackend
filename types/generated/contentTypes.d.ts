@@ -1040,6 +1040,39 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiSocialLinkSocialLink extends Schema.SingleType {
+  collectionName: 'social_links';
+  info: {
+    singularName: 'social-link';
+    pluralName: 'social-links';
+    displayName: 'SocialLink';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    googleLocationLink: Attribute.Text & Attribute.Required;
+    facebookLink: Attribute.Text & Attribute.Required;
+    instagramLink: Attribute.Text & Attribute.Required;
+    youtubeLink: Attribute.Text & Attribute.Required;
+    linkedinLink: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-link.social-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-link.social-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   collectionName: 'sub_categories';
   info: {
@@ -1116,6 +1149,7 @@ declare module '@strapi/types' {
       'api::hero-slider.hero-slider': ApiHeroSliderHeroSlider;
       'api::owner-talk.owner-talk': ApiOwnerTalkOwnerTalk;
       'api::product.product': ApiProductProduct;
+      'api::social-link.social-link': ApiSocialLinkSocialLink;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }
   }

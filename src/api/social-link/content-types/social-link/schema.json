@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "social_links",
+  "info": {
+    "singularName": "social-link",
+    "pluralName": "social-links",
+    "displayName": "SocialLink"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "googleLocationLink": {
+      "type": "text",
+      "required": true
+    },
+    "facebookLink": {
+      "type": "text",
+      "required": true
+    },
+    "instagramLink": {
+      "type": "text",
+      "required": true
+    },
+    "youtubeLink": {
+      "type": "text",
+      "required": true
+    },
+    "linkedinLink": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
