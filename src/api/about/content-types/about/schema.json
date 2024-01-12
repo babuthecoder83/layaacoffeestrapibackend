@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "required": true
+    },
+    "solgan": {
+      "type": "string",
+      "required": true
+    },
+    "paragraph1": {
+      "type": "richtext",
+      "required": true
+    },
+    "paragraph2": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
