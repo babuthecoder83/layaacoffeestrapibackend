@@ -37,6 +37,12 @@
       "type": "decimal",
       "required": true,
       "default": 3.5
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "category"
     }
   }
 }
