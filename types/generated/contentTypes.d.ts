@@ -808,6 +808,39 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactContact extends Schema.CollectionType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    addressLine1: Attribute.String & Attribute.Required;
+    addressLine2: Attribute.String & Attribute.Required;
+    city: Attribute.String & Attribute.Required;
+    phoneNumber: Attribute.String & Attribute.Required;
+    emailAddress: Attribute.Email & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -923,6 +956,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
+      'api::contact.contact': ApiContactContact;
       'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }
