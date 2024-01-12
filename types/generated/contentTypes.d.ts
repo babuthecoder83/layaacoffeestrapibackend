@@ -870,6 +870,35 @@ export interface ApiGalleryGallery extends Schema.CollectionType {
   };
 }
 
+export interface ApiHeroSliderHeroSlider extends Schema.CollectionType {
+  collectionName: 'hero_sliders';
+  info: {
+    singularName: 'hero-slider';
+    pluralName: 'hero-sliders';
+    displayName: 'HeroSlider';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hero-slider.hero-slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hero-slider.hero-slider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -987,6 +1016,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
       'api::gallery.gallery': ApiGalleryGallery;
+      'api::hero-slider.hero-slider': ApiHeroSliderHeroSlider;
       'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }
