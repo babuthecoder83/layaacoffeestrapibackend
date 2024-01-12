@@ -808,6 +808,52 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    price: Attribute.Decimal & Attribute.Required & Attribute.DefaultTo<100>;
+    currency: Attribute.Enumeration<['INR']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'INR'>;
+    isFeatured: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    isDrink: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    rating: Attribute.Decimal & Attribute.Required & Attribute.DefaultTo<3.5>;
+    image: Attribute.Media & Attribute.Required;
+    sub_category: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::sub-category.sub-category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubCategorySubCategory extends Schema.CollectionType {
   collectionName: 'sub_categories';
   info: {
@@ -835,6 +881,11 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
       'api::sub-category.sub-category',
       'manyToOne',
       'api::category.category'
+    >;
+    products: Attribute.Relation<
+      'api::sub-category.sub-category',
+      'oneToMany',
+      'api::product.product'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -872,6 +923,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::category.category': ApiCategoryCategory;
+      'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }
   }

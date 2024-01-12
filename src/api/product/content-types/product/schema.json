@@ -1,10 +1,11 @@
 {
   "kind": "collectionType",
-  "collectionName": "sub_categories",
+  "collectionName": "products",
   "info": {
-    "singularName": "sub-category",
-    "pluralName": "sub-categories",
-    "displayName": "SubCategory"
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -21,8 +22,8 @@
     },
     "price": {
       "type": "decimal",
-      "default": 100,
-      "required": true
+      "required": true,
+      "default": 100
     },
     "currency": {
       "type": "enumeration",
@@ -44,28 +45,22 @@
     },
     "rating": {
       "type": "decimal",
-      "required": true,
-      "default": 3.5
-    },
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
+      "default": 3.5,
       "required": true
     },
-    "category": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "sub_category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "sub_categories"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "sub_category"
+      "target": "api::sub-category.sub-category",
+      "inversedBy": "products"
     }
   }
 }
