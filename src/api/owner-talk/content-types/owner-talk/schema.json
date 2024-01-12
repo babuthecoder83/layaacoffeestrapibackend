@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "owner_talks",
+  "info": {
+    "singularName": "owner-talk",
+    "pluralName": "owner-talks",
+    "displayName": "OwnerTalk"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ownerName": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "paragraph1": {
+      "type": "richtext",
+      "required": true
+    },
+    "paragraph2": {
+      "type": "richtext",
+      "required": true
+    },
+    "paragraph3": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

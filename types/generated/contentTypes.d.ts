@@ -961,6 +961,39 @@ export interface ApiHeroSliderHeroSlider extends Schema.CollectionType {
   };
 }
 
+export interface ApiOwnerTalkOwnerTalk extends Schema.SingleType {
+  collectionName: 'owner_talks';
+  info: {
+    singularName: 'owner-talk';
+    pluralName: 'owner-talks';
+    displayName: 'OwnerTalk';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    ownerName: Attribute.String & Attribute.Required;
+    position: Attribute.String & Attribute.Required;
+    paragraph1: Attribute.RichText & Attribute.Required;
+    paragraph2: Attribute.RichText & Attribute.Required;
+    paragraph3: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::owner-talk.owner-talk',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::owner-talk.owner-talk',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1081,6 +1114,7 @@ declare module '@strapi/types' {
       'api::experience.experience': ApiExperienceExperience;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::hero-slider.hero-slider': ApiHeroSliderHeroSlider;
+      'api::owner-talk.owner-talk': ApiOwnerTalkOwnerTalk;
       'api::product.product': ApiProductProduct;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
     }
