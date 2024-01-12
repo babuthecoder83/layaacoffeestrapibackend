@@ -1,5 +1,5 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "experience_videos",
   "info": {
     "singularName": "experience-video",
@@ -16,8 +16,7 @@
         "videos"
       ],
       "type": "media",
-      "multiple": false,
-      "required": true
+      "multiple": false
     }
   }
 }

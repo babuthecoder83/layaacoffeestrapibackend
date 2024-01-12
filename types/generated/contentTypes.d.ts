@@ -903,7 +903,8 @@ export interface ApiExperienceExperience extends Schema.SingleType {
   };
 }
 
-export interface ApiExperienceVideoExperienceVideo extends Schema.SingleType {
+export interface ApiExperienceVideoExperienceVideo
+  extends Schema.CollectionType {
   collectionName: 'experience_videos';
   info: {
     singularName: 'experience-video';
@@ -914,7 +915,7 @@ export interface ApiExperienceVideoExperienceVideo extends Schema.SingleType {
     draftAndPublish: false;
   };
   attributes: {
-    video: Attribute.Media & Attribute.Required;
+    video: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
