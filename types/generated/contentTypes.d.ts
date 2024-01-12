@@ -873,6 +873,36 @@ export interface ApiContactContact extends Schema.CollectionType {
   };
 }
 
+export interface ApiExperienceExperience extends Schema.SingleType {
+  collectionName: 'experiences';
+  info: {
+    singularName: 'experience';
+    pluralName: 'experiences';
+    displayName: 'Experience';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGalleryGallery extends Schema.CollectionType {
   collectionName: 'galleries';
   info: {
@@ -1048,6 +1078,7 @@ declare module '@strapi/types' {
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
+      'api::experience.experience': ApiExperienceExperience;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::hero-slider.hero-slider': ApiHeroSliderHeroSlider;
       'api::product.product': ApiProductProduct;
