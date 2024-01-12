@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "experience_videos",
+  "info": {
+    "singularName": "experience-video",
+    "pluralName": "experience-videos",
+    "displayName": "ExperienceVideo"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

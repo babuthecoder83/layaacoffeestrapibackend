@@ -903,6 +903,35 @@ export interface ApiExperienceExperience extends Schema.SingleType {
   };
 }
 
+export interface ApiExperienceVideoExperienceVideo extends Schema.SingleType {
+  collectionName: 'experience_videos';
+  info: {
+    singularName: 'experience-video';
+    pluralName: 'experience-videos';
+    displayName: 'ExperienceVideo';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    video: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience-video.experience-video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience-video.experience-video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGalleryGallery extends Schema.CollectionType {
   collectionName: 'galleries';
   info: {
@@ -1209,6 +1238,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
       'api::experience.experience': ApiExperienceExperience;
+      'api::experience-video.experience-video': ApiExperienceVideoExperienceVideo;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::hero-slider.hero-slider': ApiHeroSliderHeroSlider;
       'api::owner-talk.owner-talk': ApiOwnerTalkOwnerTalk;
